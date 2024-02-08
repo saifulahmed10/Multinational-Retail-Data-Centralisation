@@ -30,7 +30,6 @@ class DatabaseConnector:
     def list_db_tables(self):
         inspector = inspect(self.engine)
         table_names = inspector.get_table_names()
-        print(table_names)
         return table_names
 
     def read_local_creds(self):
@@ -38,18 +37,14 @@ class DatabaseConnector:
             data = yaml.safe_load(f)
             return data
 
-    def upload_to_db(self, df, table_name, if_exists = 'replace'):
-        local_creds = self.read_local_creds()
-        DATABASE_TYPE = 'postgresql'
-        DBAPI = 'psycopg2'
-        USER = local_creds['USER']
-        PASSWORD = local_creds['PASSWORD']
-        HOST = local_creds['HOST']
-        PORT = local_creds['PORT']
-        DATABASE = local_creds['DATABASE']
-        local_engine = create_engine(f"postgresql://{self.read_local_creds()['USER']}:{self.read_local_creds()['PASSWORD']}@{self.read_local_creds()['HOST']}:{self.read_local_creds()['PORT']}/{self.read_local_creds()['DATABASE']}")
-        dim_user = df.to_sql('legacy_user', local_engine)
-        return dim_user
+    def upload_to_db(self, df, table_name):
+        local_engine = create_engine(f"postgresql://{self.read_db_creds()['USER']}:{self.read_db_creds()['PASSWORD']}@{self.read_db_creds()['HOST']}:{self.read_db_creds()['PORT']}/{self.read_db_creds()['DATABASE']}")
+        df.to_sql(table_name, local_engine, if_exists = 'replace')
+        return df
+
+    
+
+
 
 # cleaning = DataCleaning()
 # df = cleaning.clean_user_data()
