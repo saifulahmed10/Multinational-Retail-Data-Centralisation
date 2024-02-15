@@ -22,29 +22,31 @@ Database Upload: The cleaned data is then uploaded to the PostgreSQL database, s
 ## Technologies Used
 The project leverages a variety of technologies:
 
-requests: Used for making HTTP requests and interacting with external APIs.
+**Programming language**: Python
 
-validators: Provides utilities for validating various data types, URLs, and email addresses.
+***`requests`***: Used for making HTTP requests and interacting with external APIs.
 
-pandas: A powerful data manipulation and analysis library, facilitating structured data handling.
+***`validators`***: Provides utilities for validating various data types, URLs, and email addresses.
 
-sqlalchemy: A toolkit for SQL interaction and an Object-Relational Mapping (ORM) library for database operations.
+***`pandas`***: A powerful data manipulation and analysis library, facilitating structured data handling.
 
-tabula: Enables data extraction from PDF documents.
+***`sqlalchemy`***: A toolkit for SQL interaction and an Object-Relational Mapping (ORM) library for database operations.
 
-boto3: The AWS SDK for Python, used for AWS service integration.
+***`tabula`***: Enables data extraction from PDF documents.
 
-yaml: A library for working with YAML files.
+***`boto3`***: The AWS SDK for Python, used for AWS service integration.
 
-re: Python's regular expression library for pattern matching and data extraction.
+***`yaml`***: A library for working with YAML files.
 
-Pandas: Employed for data manipulation and cleaning tasks.
+***`re`***: Python's regular expression library for pattern matching and data extraction.
 
-GitHub: Version control and collaboration via GitHub to manage project changes and updates.
+***`Pandas`***: Employed for data manipulation and cleaning tasks.
 
-PostgreSQL and pgAdmin: Utilized for database management and SQL querying.
+***`GitHub`***: Version control and collaboration via GitHub to manage project changes and updates.
 
-AWS: AWS services are used for data retrieval and storage, enhancing the project's scalability and flexibility.
+***`PostgreSQL`*** and pgAdmin: Utilized for database management and SQL querying.
+
+***`AWS`***: AWS services are used for data retrieval and storage, enhancing the project's scalability and flexibility.
 
 ## Challenges and Solutions
 
