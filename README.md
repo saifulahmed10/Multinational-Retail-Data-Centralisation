@@ -1,6 +1,4 @@
-Update your GitHub repository with the latest code changes from your local project. Start by staging your modifications and creating a commit. Then, push the changes to your GitHub repository.
-Additionally, document your progress by adding to your GitHub README file. You can refer to the relevant lesson in the prerequisites for this task for more information.
-At minimum, your README file should contain the following information:
+
 Project Title
 Table of Contents, if the README file is long
 A description of the project: what it does, the aim of the project, and what you learned
@@ -56,9 +54,28 @@ def list_db_tables(self):
         table_names = inspector.get_table_names()
         return table_names
 
+# DataExtractor - this class is used to extract all the data that is obtained through different means.
 
+For example:
 
-# DataExtractor - this class is used to 
+Extract yaml file
+Extract pdf file from a link
+Extracting file by api request
+Extracting from s3 bucket
+Extracting JSON file from s3 bucket
+
+# DataCleaning - this class is used to clean all the data that has been extracted using pandas as pd.
+
+Different cleaning methods were used for example dropping NULL values, dropping duplicates, adjusting date to fit format, convert column to kg from g and ml.
+
+# SQL statements for star based schema.
+
+SQL statements were used to change the data types of all the dim tables aswell as the orders_table, using the ALTER TABLE [table_name] ALTER COLUMN [column_name] TYPE [data_type] statements.
+
+Primary keys were added to the columns that were present in the dim tables as well as the orders table using ALTER TABLE [table_name] ADD PRIMARY KEY [column_name]
+
+Foreign keys were added to the orders_table column for the corresponding primary key.
+
 
 
 
