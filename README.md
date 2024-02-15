@@ -55,12 +55,5 @@ Throughout the project, challenges such as data integrity and API integration we
 ## Expected Output
 
 The project aims to derive various metrics and insights from the sales_data database through SQL querying. Examples of these insights include sales trends, customer behavior analysis, and inventory management indicators. Specific SQL queries will be formulated to extract these metrics, providing valuable business intelligence.
-
- 
-## Table of Contents
-- [Project Overview](#project-overview)
-- [Project Structure](#project-structure)
-- [Technologies Used](#technologies-used)
-- [Challenges and Solutions](#challenges-and-solutions)
 - [Expected Output](#expected-output)
 
