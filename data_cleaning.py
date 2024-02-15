@@ -68,11 +68,26 @@ class DataCleaning:
     def called_clean_store_data(self):
         extractor = DataExtractor()
         store_endpoint =  f'https://aqj7u5id95.execute-api.eu-west-1.amazonaws.com/prod/store_details/{450}'
-        store_data = extractor.retrieve_stores_data(store_endpoint)
+        store_data = extractor.retrieve_stores_data()
         try:
-            store_data = store_data.drop(columns=['lat'])
+            strange_entries = ['YELVM536YT','FP8DLXQVGH','HMHIFNLOBN','F3AO8V2LHU','OH20I92LX3','OYVW925ZL8','B3EH2ZGQAV']
+            condition_1 = store_data['country_code'].isin(strange_entries)
+            condition_2 = store_data['opening_date'] == 'NULL'
+            store_data = store_data.drop(store_data[condition_1 | condition_2].index)
 
-            store_data['continent'] = store_data['continent'].str.replace('ee','')
+            store_data = store_data.drop('lat', axis=1)
+
+            store_data['address'] = store_data['address'].str.replace('\n', ', ')
+
+            store_data['staff_numbers'] = store_data['staff_numbers'].str.replace(r'\D', '', regex=True)
+
+            store_data['opening_date'] = pd.to_datetime(store_data['opening_date'], format='mixed', errors='ignore')
+
+            store_data['continent'] = store_data['continent'].str.replace('ee', '')
+
+            store_data.replace('N/A', pd.NA, inplace=True)
+
+            store_data = store_data.reset_index(drop=True)
 
             return store_data
         except Exception as e:
@@ -154,5 +169,10 @@ class DataCleaning:
                 return str(uuid.uuid4())
 
         cleaned_json_data['date_uuid'] = cleaned_json_data['date_uuid'].apply(clean_uuid)
+        strange_entries = ['1YMRDJNU2T', '9GN4VIO5A8', 'NF46JOZMTA', 'LZLLPZ0ZUA', 'YULO5U0ZAM', 'SAT4V9O2DL', '3ZZ5UCZR5D', 'DGQAH7M1HQ', '4FHLELF101', '22JSMNGJCU', 'EB8VJHYZLE', '2VZEREEIKB', 'K9ZN06ZS1X', '9P3C0WBWTU', 'W6FT760O2B', 'DOIR43VTCM', 'FA8KD82QH3', '03T414PVFI', 'FNPZFYI489', '67RMH5U2R6', 'J9VQLERJQO', 'ZRH2YT3FR8', 'GYSATSCN88']
+        condition_1 = cleaned_json_data['month'].isin(strange_entries)
+        condition_2 = cleaned_json_data['month'] == 'NULL'
+        cleaned_json_data = cleaned_json_data.drop(cleaned_json_data[condition_1 | condition_2].index)
+
     
         return cleaned_json_data
