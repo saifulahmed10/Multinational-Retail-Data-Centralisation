@@ -8,16 +8,24 @@ Project Structure
 The project consists of several key components:
 
 Data Extraction: Python scripts are employed to extract data from various sources, including APIs and external data files.
+
 Data Cleaning: Pandas is utilized for data cleaning and transformation to ensure the data is in a suitable format for database upload.
+
 Database Upload: The cleaned data is then uploaded to the PostgreSQL database, sales_data, using pgAdmin for seamless integration.
+
 Technologies Used
 The project leverages a variety of technologies:
 
 Python: Utilized for scripting data extraction, cleaning, and transformation.
+
 Pandas: Employed for data manipulation and cleaning tasks.
+
 GitHub: Version control and collaboration via GitHub to manage project changes and updates.
+
 PostgreSQL and pgAdmin: Utilized for database management and SQL querying.
+
 AWS: AWS services are used for data retrieval and storage, enhancing the project's scalability and flexibility.
+
 Challenges and Solutions
 Throughout the project, challenges such as data integrity and API integration were encountered. By applying the skills learned at AiCore, these challenges were addressed through rigorous data validation techniques and API authentication methodologies, ensuring the integrity and security of the extracted data.
 
